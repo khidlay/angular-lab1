@@ -1,0 +1,34 @@
+<section class="main-container">
+  <header>
+    <h1>To-Do List</h1>
+    <p>A place to store your to-do's!</p>
+  </header>
+
+  <form #filterForm="ngForm" (input)="searchTerm(filterForm)">
+    <label for=""></label>
+    <input
+      type="text"
+      name="filter"
+      id="filter"
+      placeholder="Filter your to-do's..."
+    />
+
+    <ol>
+      <li *ngFor="let item of filterTasks; index as i" class="task-container">
+        <p>{{ todos.task }}</p>
+        <p>{{ todos.completed }}</p>
+      </li>
+    </ol>
+  </form>
+
+  <form #addForm="ngForm" (ngSubmit)="addTask(addForm, todos)">
+    <input
+      type="text"
+      name="task"
+      id="task"
+      placeholder="Add your to-do..."
+      ngModel
+    />
+    <button class="submit-button">Add</button>
+  </form>
+</section>
